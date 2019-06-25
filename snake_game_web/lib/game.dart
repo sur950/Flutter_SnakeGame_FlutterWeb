@@ -216,7 +216,7 @@ class _GameState extends State<Game> {
         break;
 
       case GameState.FAILURE:
-        timer.cancel();
+
         child = Container(
           width: 900,
           height: 500,

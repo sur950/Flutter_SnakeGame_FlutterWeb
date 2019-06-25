@@ -146,7 +146,6 @@ class _GameState extends State<Game> {
     generatenewPoint();
     _direction = Direction.UP;
     setGameState(GameState.RUNNING);
-    timer = new Timer.periodic(new Duration(milliseconds: 400), onTimeTick);
   }
 
   void startingSnake() {
@@ -233,36 +232,6 @@ class _GameState extends State<Game> {
         break;
     }
     return child;
-  }
-
-  void onTimeTick(Timer timer) {
-    setState(() {
-      snakePosition.insert(0, getLatestSnake());
-      snakePosition.removeLast();
-    });
-
-    var currentHeadPos = snakePosition.first;
-    if (currentHeadPos.x < 0 ||
-        currentHeadPos.y < 0 ||
-        currentHeadPos.x > 320 / 20 ||
-        currentHeadPos.y > 320 / 20) {
-      setGameState(GameState.FAILURE);
-      return;
-    }
-
-    if (snakePosition.first.x == newPointPosition.x &&
-        snakePosition.first.y == newPointPosition.y) {
-      generatenewPoint();
-      setState(() {
-        if (score <= 10)
-          score = score + 1;
-        else if (score > 10 && score <= 25)
-          score = score + 2;
-        else
-          score = score + 3;
-        snakePosition.insert(0, getLatestSnake());
-      });
-    }
   }
 
   Point getLatestSnake() {
