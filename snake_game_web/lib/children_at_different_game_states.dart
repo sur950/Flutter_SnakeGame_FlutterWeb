@@ -23,8 +23,8 @@ final Widget gameRunningChild = Container(
 );
 
 final Widget newSnakePointInGame = Container(
-  width: 25,
-  height: 25,
+  width: 24,
+  height: 24,
   decoration: new BoxDecoration(
     color: const Color(0xFF0080FF),
     shape: BoxShape.circle,
